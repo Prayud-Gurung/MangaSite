@@ -1,0 +1,21 @@
+<!-- index.ejs -->
+<%- include("partials/header.ejs") %>
+<main>
+    <div id="current-manga-info">
+        <h2><%= mangaName %></h1>
+        <h3>Volume <%= mangaVolume %> Chapter <%= mangaChapter %></h2>
+    </div>
+
+    <img id="chapter-page" class="chapter-page-default" src="<%=chapterPagesURL[0]%>">
+    <div id="nav-buttons">
+        <button id="previous-btn"><< Previous</button>
+        <h4 id="page-number">Page: #</h4>
+        <button id="next-btn">Next >></button>
+    </div>
+
+    <script>
+        var chapterPagesUrl = '<%- JSON.stringify(chapterPagesURL) %>';
+        var chapterPagesURL = JSON.parse(chapterPagesUrl)
+    </script>
+</main>
+<%- include("partials/footer.ejs") %>

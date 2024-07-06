@@ -1,0 +1,39 @@
+<!-- index.ejs -->
+<%- include("partials/header.ejs") %>
+    <main>
+
+        <section id="manga-info-container">
+            <div id="manga-info">
+                <div>
+                    <h2 id="manga-title"><%= mangaTitle  %></h2>
+                    <h3>Description</h2>
+                    <p id="manga-desc">
+                        <%= mangaDesc %>
+                    </p>
+                </div>
+                <img class="manga-cover" src="<%= mangaCover %>" alt="">
+            </div>
+
+            <div id="chapters-container">
+                <h3>Chapters</h3>
+                <ul id="chapter-list">
+                    <% chapters.forEach(element=> { %>
+                        <li>
+                            <a href="/get-chapter/<%= element.id %>?mangaName=<%= mangaTitle %>&mangaVolume=<%=element.attributes.volume%>&mangaChapter=<%=element.attributes.chapter%>">
+                                <%=`Volume ${element.attributes.volume} Chapter ${element.attributes.chapter}`%>
+                            </a>
+                            <p class="published-date">
+                                <%= element.attributes.publishAt %>
+                            </p>
+                        </li>
+                        <% }) %>
+                </ul>
+            </div>
+        </section>
+
+
+        <section>
+            <h3>Comments</h3>
+        </section>
+    </main>
+    <%- include("partials/footer.ejs") %>

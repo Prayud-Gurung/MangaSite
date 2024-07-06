@@ -1,0 +1,20 @@
+<!-- index.ejs -->
+<%- include("partials/header.ejs") %>
+    <main>
+        <h1 id="home">Home</h1>
+
+        <div id="manga-container">
+            <% mangas.forEach(element=> { %>
+                <div class="manga">
+                    <img class="manga-cover" src="<%= element.coverArtSrc %>">
+
+                    <% const stringData = JSON.stringify(element)%>
+                    <a href="/get-manga?mangaDetail=<%= stringData %>">
+                        <h4><%= element.manga.attributes.title.en %></h4>
+                    </a>
+                </div>
+            <% }) %>
+        </div>
+        <button id="random-btn">Get Random Manga</button>
+    </main>
+    <%- include("partials/footer.ejs") %>
